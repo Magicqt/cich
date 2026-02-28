@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地天妈妈·非遗文化传承与学习工作坊</title>
+    <style>
+        :root {
+            --paper: #f9f7f2;      /* 温润的宣纸感背景 */
+            --ink: #1a1a1a;        /* 墨色 */
+            --accent: #b22c24;     /* 传统朱砂红 */
+            --indigo: #2c3e50;     /* 扎染黛蓝 */
+            --gray: #666;
+            --border: rgba(0,0,0,0.08);
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+            margin: 0;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 1. 左上角横向 Logo */
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(249, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-text {
+            font-size: 18px;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            margin: 0 10px;
+        }
+
+        /* 2. 顶部导航矩阵 - 艺术化大块模式 */
+        .nav-grid {
+            padding: 120px 5% 60px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .nav-card {
+            text-decoration: none;
+            color: inherit;
+            background: #fff;
+            padding: 10px;
+            transition: all 0.5s ease;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background: #eee;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .nav-card h3 {
+            font-size: 1.1rem;
+            margin: 10px 0 5px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* 针对不同艺术感的标签装饰 */
+        .tag-style {
+            font-size: 12px;
+            display: block;
+            text-align: center;
+            color: var(--gray);
+            font-family: sans-serif;
+        }
+
+        /* 3. 正文排版：人文叙事区 */
+        .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5% 100px;
+        }
+
+        .hero-title-box {
+            margin: 80px 0;
+            border-left: 2px solid var(--accent);
+            padding-left: 30px;
+        }
+
+        .hero-title-box h1 {
+            font-size: 3.2rem;
+            line-height: 1.3;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .hero-title-box h1 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+
+        .sub-manifesto {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: var(--indigo);
+        }
+
+        /* 4. 师徒制生命工坊 - 分栏布局 */
+        .workshop-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin: 100px 0;
+            align-items: start;
+        }
+
+        .section-label {
+            font-size: 14px;
+            color: var(--accent);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .workshop-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .workshop-list li {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .workshop-list li b {
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .workshop-list li p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* 5. AI 硬核资产区 - 现代质感 */
+        .ai-core-box {
+            background: #fff;
+            padding: 80px 10%;
+            margin: 100px 0;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.03);
+            border-radius: 4px;
+        }
+
+        .ai-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .ai-item {
+            padding: 30px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .ai-item:hover {
+            border-color: var(--indigo);
+            background: #fcfcfc;
+        }
+
+        .ai-item h4 {
+            font-size: 1.1rem;
+            margin-top: 0;
+            color: var(--indigo);
+            display: flex;
+            align-items: center;
+        }
+
+        .ai-item h4::before {
+            content: "◆";
+            margin-right: 10px;
+            font-size: 10px;
+        }
+
+        /* 6. 谁适合来 & 承诺 */
+        .closing-section {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .target-group {
+            display: flex;
+            justify-content: space-around;
+            margin: 60px 0;
+            text-align: left;
+        }
+
+        .target-card {
+            width: 30%;
+            padding: 20px;
+            border-top: 1px solid var(--accent);
+        }
+
+        .cta-box {
+            margin-top: 80px;
+            padding: 60px;
+            border: 1px solid var(--accent);
+            background: #fff;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: #f0f0f0;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .nav-grid { grid-template-columns: repeat(2, 1fr); }
+            .workshop-section, .ai-grid, .target-group { grid-template-columns: 1fr; display: block; }
+            .hero-title-box h1 { font-size: 2rem; }
+            .target-card { width: 100%; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-bar">
+        <div class="logo-text">地天妈妈 <span>|</span> 非遗文化传承与学习工作坊</div>
+    </header>
+
+    <nav class="nav-grid">
+        <a href="#" class="nav-card">
+            <div class="card-img"><img src="jiuzhen.jpg" alt="九针术"></div>
+            <h3>彝医九针术</h3>
+            <span class="tag-style">身体归位 · 骨气平衡</span>
+        </a>
+        <a href="#" class="nav-card">
+            <div class="card-img"><img src="zhuanke.jpg" alt="篆刻"></div>
+            <h3>非遗篆刻</h3>
+            <span class="tag-style">神气平静 · 治印灵魂</span>
+        </a>
+        <a href="#" class="nav-card">
+            <div class="card-img"><img src="tea.jpg" alt="三道茶"></div>
+            <h3>白族三道茶</h3>
+            <span class="tag-style">一苦二甜 · 三回味</span>
+        </a>
+        <a href="#" class="nav-card">
+            <div class="card-img"><img src="jiama.jpg" alt="甲马"></div>
+            <h3>白族甲马</h3>
+            <span class="tag-style">神灵宇宙 · 创意解码</span>
+        </a>
+        <a href="#" class="nav-card">
+            <div class="card-img"><img src="zaran.jpg" alt="扎染"></div>
+            <h3>大理扎染</h3>
+            <span class="tag-style">色彩哲学 · 云端蓝草</span>
+        </a>
+    </nav>
+
+    <main class="content-container">
+        
+        <section class="hero-title-box">
+            <h1>别让大理只成为你的路过，<br>让它成为你人生的<em>“母本”</em></h1>
+            <p class="sub-manifesto">大理非遗“共创人”闭环研习营 招生启幕</p>
+        </section>
+
+        <section class="workshop-section">
+            <div>
+                <span class="section-label">THE OPENING</span>
+                <p style="font-size: 1.2rem;">如果你的孩子，正试图从某种“标准答案”中逃离……</p>
+                <p>现在的教育像是一场漫长的长跑，终点却长得一模一样。有的孩子擅长奔跑，有的孩子却更喜欢蹲在路边看一只瓦猫的纹理，或者痴迷于一块布在板蓝根液里晕出的蓝色。</p>
+                <p>在传统评价体系里，他们或许是“坐不住”的、“不合群”的。但在大理，这些孩子是天生的手艺人，是灵气的载体。</p>
+                <p><b>用一门手艺，养活一个灵魂？甚至，经营一个未来？</b></p>
+            </div>
+            <div>
+                <span class="section-label">🏛️ 生命工坊</span>
+                <ul class="workshop-list">
+                    <li>
+                        <b>扎染里的色彩哲学</b>
+                        <p>听周城的奶奶讲，蓝草如何经过发酵，在大理的风里变成独一无二的云。（含专业裁剪与缝纫技术）</p>
+                    </li>
+                    <li>
+                        <b>甲马里的神灵宇宙</b>
+                        <p>跟着刻版老师傅，用刀尖去触碰那一千年前的奇幻想象。创造并与各品牌联名。 </p>
+                    </li>
+                    <li>
+                        <b>整骨里的身体归位</b>
+                        <p>让非遗整骨技术告诉你，脊椎不仅仅是支撑，它是一个人的“骨气”和“平衡”。</p>
+                    </li>
+                    <li>
+                        <b>书法和篆刻的神气平静</b>
+                        <p>随2008年奥运金牌健儿刻章老师开启书法和篆刻的平静之旅。</p>
+                    </li>
+                </ul>
+                <p><i>在这里，没有试卷。老师傅用心带领你：手稳不稳，心静不静。</i></p>
+            </div>
+        </section>
+
+        <section class="ai-core-box">
+            <div class="ai-intro">
+                <span class="section-label">AI RE-DEFINITION</span>
+                <h2 style="font-size: 2rem;">🤖 传统不是包袱，是 AI 时代的“硬核资产”</h2>
+                <p>AI 不是在替孩子画画，而是帮他们把老手艺里的“魂”提取出来，变成现代生意能用的“料”。</p>
+            </div>
+            
+            <div class="ai-grid">
+                <div class="ai-item">
+                    <h4>审美基因的数字化重组</h4>
+                    <p>利用 AI 的模式识别与生成能力，深度解构非遗视觉逻辑，让老手艺瞬间具备现代设计的商业审美。</p>
+                </div>
+                <div class="ai-item">
+                    <h4>从“盲目试错”到“智能辅助创意”</h4>
+                    <p>AI 是孩子的创意合伙人。在虚拟空间里完成数十次方案迭代，极大地降低学习门槛，让创意精准落地。</p>
+                </div>
+                <div class="ai-item">
+                    <h4>个人知识产权（IP）的数字化留存</h4>
+                    <p>为学员作品建立专属“数字身份”，让每一件实物作品拥有在互联网全球分发、授权、甚至跨界联名的价值。</p>
+                </div>
+                <div class="ai-item">
+                    <h4>市场趋势的精准捕捉</h4>
+                    <p>引入 AI 辅助文化消费洞察，确保孩子创作出的每一件作品，是能击中现代年轻人痛点的“国潮新爆款”。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing-section">
+            <span class="section-label">WHO WE NEED</span>
+            <h2 style="font-size: 2rem;">🌟 谁适合来到这里？</h2>
+            <div class="target-group">
+                <div class="target-card">
+                    <b>想拥有一门“副业”</b>
+                    <p>在AI时代，唯一的不可替代性，就是带着体温的手作。</p>
+                </div>
+                <div class="target-card">
+                    <b>不适应传统学校的孩子</b>
+                    <p>这里没有排名，只有“作品”。我们尊重每一个不被定义的灵魂。</p>
+                </div>
+                <div class="target-card">
+                    <b>找回自由舒展的骨气</b>
+                    <p>传承不是为了守旧，而是为了在现代社会里，活得更通透、更自由。</p>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <span class="section-label">THE PROMISE</span>
+                <h3>🎁 这是一个闭环，更是一个承诺</h3>
+                <p>陪你经历从“敬畏学习”到“AI共创”，再到“个人品牌建立”的全过程。</p>
+                <div class="qr-placeholder">[ 扫码咨询 / 领取“骨气”卡片 ]</div>
+                <p><b>Slogan：一门手艺，一个世界。传承，是为了更自由的舒展。</b></p>
+                <p style="font-size: 14px; color: #999;">地点：中国·大理</p>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
