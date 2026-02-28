@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九针术：生命结构的归位艺术 - 地天妈妈</title>
+    <style>
+        :root {
+            --paper: #f9f7f2;
+            --ink: #1a1a1a;
+            --accent: #b22c24;
+            --gray: #666;
+            --line: rgba(0,0,0,0.08);
+            --soft-gold: #c5a47e;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: "Noto Serif SC", "Source Han Serif SC", serif;
+            margin: 0;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 顶部返回导航 */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(249, 247, 242, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 14px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-link::before { content: "←"; margin-right: 10px; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 120px 5% 60px; }
+
+        .section-tag { color: var(--accent); font-size: 12px; letter-spacing: 3px; display: block; margin-bottom: 10px; }
+        h1.page-title { font-size: 3rem; margin: 10px 0; font-weight: 500; }
+
+        /* 脊柱美学数据区 */
+        .spine-aesthetics {
+            background: #fff;
+            padding: 50px;
+            margin: 80px 0;
+            border: 1px solid var(--line);
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .data-item b { color: var(--accent); font-size: 1.5rem; display: block; }
+
+        /* 贺朝贵老师简介 */
+        .master-profile {
+            display: flex;
+            gap: 40px;
+            margin: 80px 0;
+            align-items: flex-start;
+        }
+
+        .master-photo { 
+            width: 280px; 
+            aspect-ratio: 3/4; 
+            background: #eee; 
+            flex-shrink: 0; 
+            border: 1px solid var(--line);
+            position: relative;
+        }
+
+        .master-photo::after {
+            content: "彝医传承人";
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            background: var(--accent);
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 12px;
+        }
+
+        /* ✨ 重新设计的“弟子三修”：摒弃黑色，改为人文雅致风格 */
+        .ethics-container {
+            margin: 120px 0 60px;
+            padding: 80px 40px;
+            background-image: radial-gradient(var(--line) 1px, transparent 1px);
+            background-size: 20px 20px; /* 增加轻微的点状底纹增加纸质感 */
+            border: 1px solid var(--line);
+            text-align: center;
+            position: relative;
+        }
+
+        .ethics-header {
+            margin-bottom: 60px;
+        }
+
+        .ethics-header h2 {
+            font-size: 2rem;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            color: var(--ink);
+        }
+
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .ethics-card {
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--line);
+            transition: all 0.4s ease;
+        }
+
+        .ethics-card:hover {
+            border-color: var(--accent);
+            background: #fff;
+            transform: translateY(-5px);
+        }
+
+        .ethics-card .circle-num {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        .ethics-card h4 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .ethics-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 2;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--line);
+            font-size: 13px;
+            color: var(--gray);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .master-profile { flex-direction: column; }
+            .master-photo { width: 100%; }
+            .ethics-grid { grid-template-columns: 1fr; }
+            .data-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="nav-header">
+        <a href="index.html" class="back-link">地天妈妈 · 非遗文化传承与学习工作坊</a>
+    </header>
+
+    <main class="container">
+        
+        <section>
+            <span class="section-tag">HERITAGE DEFINITION</span>
+            <h1 class="page-title">以指代针，以技代药</h1>
+            <p><b>非遗九针术</b>，俗称“摸摸好”诊疗技术。这项弥足珍贵的技艺起源于上古时代，是古代劳动人民在长期的生产生活实践中总结出来的智慧结晶。针对南方居民因常年攀援易损伤脊椎、骨关节的特征，演化出一套独特的疏通经络疗法。</p>
+            <p style="color: var(--gray);">“九针”是九种工具的总称，结合七十三式手法。它追求简、便、验、廉，通过无副作用的特殊手法，令疼痛“摸摸就好”。</p>
+        </section>
+
+        <section class="spine-aesthetics">
+            <span class="section-tag">BIO-MECHANICS</span>
+            <h2>脊柱美学：纵向拉长的“S形弹簧”</h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <b>20° - 50°</b>
+                    <span>正常脊柱后凸角度，超过即为美学缺陷</span>
+                </div>
+                <div class="data-item">
+                    <b>4 大核心曲线</b>
+                    <span>颈椎/腰椎前凸，胸椎/骶骨后凸</span>
+                </div>
+                <div class="data-item">
+                    <b>33 - 34 块</b>
+                    <span>构成支撑生命尊严的脊椎骨总数</span>
+                </div>
+                <div class="data-item">
+                    <b>C形 ➔ S形</b>
+                    <span>九针术核心：纠正构架，调整体态美学</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="master-profile">
+            <div class="master-photo">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; color:#999; font-size:12px;">[ 贺朝贵老师照片 ]</div>
+            </div>
+            <div>
+                <span class="section-tag">THE MASTER</span>
+                <h2>贺朝贵：融古博今的彝族毉者</h2>
+                <p><b>贺朝贵（1953年出生）</b>，云南彝族人，彝宝堂创始人。1998年荣获国家卫生部颁发“中国特技名医”称号，致力于让千年技艺回归生物力学的科学本质。</p>
+                <ul style="font-size: 0.9rem; color: var(--gray); padding-left: 20px;">
+                    <li>国家医学专利获得者（2014/2017）</li>
+                    <li>第四届全国少数民族医药工作表现突出优秀人才</li>
+                    <li>登上马来西亚吉隆坡国际学术讲台展示彝医医技</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="ethics-container">
+            <div class="ethics-header">
+                <span class="section-tag">THE DISCIPLINE</span>
+                <h2>弟子“三修三不入”</h2>
+                <p style="color: var(--gray); font-size: 0.9rem;">传承，不仅是技术的传授，更是医德与品格的塑造。</p>
+            </div>
+            
+            <div class="ethics-grid">
+                <div class="ethics-card">
+                    <div class="circle-num">壹</div>
+                    <h4>修德</h4>
+                    <p>有志者先修德<br>心存无德之医不可入门</p>
+                </div>
+                <div class="ethics-card">
+                    <div class="circle-num">贰</div>
+                    <h4>修艺</h4>
+                    <p>愚钝志坚者修艺<br>有志无师门之规不可入门</p>
+                </div>
+                <div class="ethics-card">
+                    <div class="circle-num">叁</div>
+                    <h4>修仁</h4>
+                    <p>无祖乱世者修仁<br>志智无仁慈之心不可入门</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>一门手艺 · 一个世界 // 地天妈妈 · 非遗文化传承与学习工作坊</p>
+        <p style="opacity:0.5; font-size:11px; margin-top:10px;">传承，是为了更自由的舒展</p>
+    </footer>
+
+</body>
+</html>
